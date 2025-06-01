@@ -1,0 +1,442 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-primary: hsl(0, 0%, 98%);
+    --bg-secondary: hsl(0, 0%, 100%);
+    --text-primary: hsl(200, 15%, 8%);
+    --text-secondary: hsl(0, 0%, 52%);
+    --shadow: rgba(0, 0, 0, 0.05);
+    --border: hsl(0, 0%, 90%);
+}
+
+[data-theme="dark"] {
+    --bg-primary: hsl(207, 26%, 17%);
+    --bg-secondary: hsl(209, 23%, 22%);
+    --text-primary: hsl(0, 0%, 100%);
+    --text-secondary: hsl(0, 0%, 100%);
+    --shadow: rgba(0, 0, 0, 0.2);
+    --border: hsl(209, 23%, 22%);
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    line-height: 1.6;
+}
+
+.header {
+    background-color: var(--bg-secondary);
+    box-shadow: 0 2px 4px var(--shadow);
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background-color: var(--bg-primary);
+}
+
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.back-button {
+    background-color: var(--bg-secondary);
+    border: none;
+    color: var(--text-primary);
+    padding: 0.75rem 2rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 2px 8px var(--shadow);
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    display: none;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.back-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.search-container {
+    position: relative;
+    flex: 1;
+    max-width: 400px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 4rem;
+    border: none;
+    border-radius: 0.375rem;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    box-shadow: 0 2px 8px var(--shadow);
+    font-size: 1rem;
+}
+
+.search-input::placeholder {
+    color: var(--text-secondary);
+}
+
+.search-icon {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.filter-dropdown {
+    position: relative;
+}
+
+.filter-button {
+    background-color: var(--bg-secondary);
+    border: none;
+    color: var(--text-primary);
+    padding: 1rem 2rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 2px 8px var(--shadow);
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 200px;
+    justify-content: space-between;
+}
+
+.filter-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-secondary);
+    border-radius: 0.375rem;
+    box-shadow: 0 4px 16px var(--shadow);
+    margin-top: 0.25rem;
+    display: none;
+    z-index: 10;
+}
+
+.filter-menu.active {
+    display: block;
+}
+
+.filter-option {
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.filter-option:hover {
+    background-color: var(--bg-primary);
+}
+
+.countries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 3rem;
+}
+
+.country-card {
+    background-color: var(--bg-secondary);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px var(--shadow);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.country-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px var(--shadow);
+}
+
+.country-flag {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.country-info {
+    padding: 1.5rem;
+}
+
+.country-name {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.country-details {
+    font-size: 0.875rem;
+    line-height: 1.8;
+}
+
+.country-details strong {
+    font-weight: 600;
+}
+
+.detail-view {
+    display: none;
+}
+
+.detail-view.active {
+    display: block;
+}
+
+.detail-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.detail-flag {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 16px var(--shadow);
+}
+
+.detail-info h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+}
+
+.detail-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.detail-stats div {
+    font-size: 1rem;
+    line-height: 2;
+}
+
+.border-countries {
+    margin-top: 2rem;
+}
+
+.border-countries h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.border-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.border-tag {
+    background-color: var(--bg-secondary);
+    border: none;
+    color: var(--text-primary);
+    padding: 0.25rem 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 8px var(--shadow);
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.border-tag:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.loading {
+    text-align: center;
+    padding: 4rem;
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+}
+
+.error {
+    text-align: center;
+    padding: 4rem;
+    color: #dc2626;
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    .main {
+        padding: 1rem;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .search-container {
+        max-width: none;
+    }
+
+    .countries-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .detail-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .detail-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 375px) {
+    .header-content {
+        padding: 0 0.75rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .theme-toggle {
+        font-size: 0.875rem;
+        padding: 0.375rem;
+    }
+
+    .main {
+        padding: 0.75rem;
+    }
+
+    .search-input {
+        padding: 0.875rem 0.875rem 0.875rem 3.5rem;
+        font-size: 0.875rem;
+    }
+
+    .search-icon {
+        left: 1.25rem;
+    }
+
+    .filter-button {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.875rem;
+        min-width: 180px;
+    }
+
+    .filter-option {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.875rem;
+    }
+
+    .countries-grid {
+        gap: 1.5rem;
+    }
+
+    .country-info {
+        padding: 1.25rem;
+    }
+
+    .country-name {
+        font-size: 1.125rem;
+    }
+
+    .country-details {
+        font-size: 0.8125rem;
+    }
+
+    .back-button {
+        padding: 0.625rem 1.5rem;
+        font-size: 0.875rem;
+    }
+
+    .detail-info h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .detail-stats div {
+        font-size: 0.875rem;
+        line-height: 1.8;
+    }
+
+    .border-countries h3 {
+        font-size: 1.125rem;
+    }
+
+    .border-tag {
+        padding: 0.375rem 0.875rem;
+        font-size: 0.8125rem;
+    }
+
+    .border-tags {
+        gap: 0.375rem;
+    }
+}

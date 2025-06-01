@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Adelani Adelaja">
+    <link rel="icon" href="./images/all-countries.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/fontawesome.min.css"
+        integrity="sha512-v8QQ0YQ3H4K6Ic3PJkym91KoeNT5S3PnDKvqnwqFD1oiqIl653crGZplPdU5KKtHjO0QKcQ2aUlQZYjHczkmGw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>restCountries Kodecamp Task<title></title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1 class="logo">Where in the world?</h1>
+            <button class="theme-toggle" id="themeToggle">
+                <span id="themeIcon">🌙</span>
+                <span id="themeText">Dark Mode</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main">
+        <button class="back-button" id="backButton">
+            <span>←</span>
+            Back
+        </button>
+
+        <div class="home-view" id="homeView">
+            <div class="controls">
+                <div class="search-container">
+                    <span class="fa-search search-icon">🔍</span>
+                    <input 
+                        type="text" 
+                        class="search-input" 
+                        id="searchInput"
+                        placeholder="Search for a country..."
+                    >
+                </div>
+                
+                <div class="filter-dropdown">
+                    <button class="filter-button" id="filterButton">
+                        <span id="filterText">Filter by Region</span>
+                        <span>▼</span>
+                    </button>
+                    <div class="filter-menu" id="filterMenu">
+                        <div class="filter-option" data-region="">All Regions</div>
+                        <div class="filter-option" data-region="Africa">Africa</div>
+                        <div class="filter-option" data-region="Americas">America</div>
+                        <div class="filter-option" data-region="Asia">Asia</div>
+                        <div class="filter-option" data-region="Europe">Europe</div>
+                        <div class="filter-option" data-region="Oceania">Oceania</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="countries-grid" id="countriesGrid">
+                <div class="loading">Loading countries...</div>
+            </div>
+        </div>
+
+        <div class="detail-view" id="detailView">
+            <div class="detail-content" id="detailContent">
+                <!-- Detail content will be populated by JavaScript -->
+            </div>
+        </div>
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>
